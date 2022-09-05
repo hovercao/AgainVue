@@ -13,7 +13,7 @@ export default {
     addCount(e) {
       const target = e.target
       const countNumber = Number(target.dataset.number)
-      this.$emit('addCounter',countNumber)
+      this.$emit('addCounter', countNumber)
     }
   }
 }
