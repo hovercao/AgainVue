@@ -3264,6 +3264,11 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
+hy-event-store@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/hy-event-store/-/hy-event-store-1.2.1.tgz#542c4f30107a7c986485545d32098d1339fb1a62"
+  integrity sha512-viMS7Zj1VmFgkAENrJr0lMV29FWzaSgLg1gTcZ+WJXuPO+SOhehWqALoJIDGms02qG+tO+++VsPkgD0rXlAikA==
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
