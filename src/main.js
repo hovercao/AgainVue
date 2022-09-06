@@ -5,5 +5,8 @@ import {createApp} from 'vue'
 // import App from "@/03_具名插槽/App";
 // import App from '@/04_作用域插槽/App'
 // import App from "@/05_provide和inject/App";
-import App from "@/06_事件总线/App";
+// import App from "@/06_事件总线/App";
+// import App from "@/07_动态组件/App";
+// import App from "@/08_keep-alive/App";
+import App from "@/09_组件的v-model/App";
 createApp(App).mount('#app')
