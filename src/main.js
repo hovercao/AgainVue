@@ -8,5 +8,7 @@ import {createApp} from 'vue'
 // import App from "@/06_事件总线/App";
 // import App from "@/07_动态组件/App";
 // import App from "@/08_keep-alive/App";
-import App from "@/09_组件的v-model/App";
+// import App from "@/09_组件的v-model/App";
+import App from '@/10_vue3的内置函数/App'
+
 createApp(App).mount('#app')
