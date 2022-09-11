@@ -1,4 +1,7 @@
 <template>
-App
+  <RouterView></RouterView>
+  <TabBar></TabBar>
 </template>
-<script setup></script>
+<script setup>
+import TabBar from "@/components/TabBar/TabBar.vue";
+</script>
