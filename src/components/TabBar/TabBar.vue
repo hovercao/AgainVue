@@ -1,41 +1,32 @@
 <template>
   <div class="tab-bar">
-    <div class="tab-bar-item" v-for="item in tabBarData">
-      <i class="iconfont" v-html="item.icon"></i>
-      <span>{{ item.pathname }}</span>
-    </div>
+    <van-tabbar v-model="currentIndex" active-color="#ff9854">
+      <template v-for="(item) in tabBarData">
+        <van-tabbar-item :to="item.path">
+          <template #icon>
+            <i class="iconfont" v-html="item.icon"></i>
+          </template>
+          <span>{{ item.pathname }}</span>
+        </van-tabbar-item>
+      </template>
+    </van-tabbar>
+
   </div>
 </template>
 
 <script setup>
 import tabBarData from '@/assets/data/tabbar'
+import {ref} from "vue";
+
+const currentIndex = ref(0)
 
 
 </script>
 <style lang="less" scoped>
 .tab-bar {
-  display: flex;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 55px;
-  border-top: 1px solid #f3f3f3;
-
-  .iconfont {
-    color: #000;
-    font-size: 25px;
-  }
-
-  .tab-bar-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    span {
-      text-align: center;
-      margin-bottom: 8px;
+  :deep(.van-tabbar-item__icon) {
+    .iconfont {
+      font-size: 26px;
     }
   }
 }
