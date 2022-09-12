@@ -7,28 +7,40 @@
       @cancel="onCancel"
   ></VanSearch>
   <VanTabs v-model:active="tabActive" color="#ff9854">
-    <VanTab title="国内.港澳台"></VanTab>
-    <VanTab title="海外"></VanTab>
+    <template v-for="(value,key,index) in allCities">
+      <VanTab :title="value?.title" :name="key"></VanTab>
+    </template>
   </VanTabs>
+  <div class="counter">
+    <CityGroup :currentCityGroup="currentCityGroup"/>
+  </div>
 </template>
 
 <script setup>
-import {onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import {useRouter} from "vue-router";
-import {getCityAll} from '@/service'
+import useCityStory from "@/stores/modules/city";
+import {storeToRefs} from 'pinia'
+import CityGroup from './component/CityGroup.vue'
 
 const router = useRouter()
 const searchValue = ref('')
 const tabActive = ref(0)
+const cityStore = useCityStory()
+cityStore.fetchAllCitiesAction()
+const {allCities} = storeToRefs(cityStore)
+
+const currentCityGroup = computed(() => allCities.value[tabActive.value])
 
 function onCancel() {
   router.back()
 }
 
-onMounted(()=>{
-  getCityAll()
-})
+
 </script>
 <style lang="less" scoped>
-
+.counter {
+  height: calc(100vh - 94px);
+  overflow-y: auto;
+}
 </style>
