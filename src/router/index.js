@@ -18,6 +18,12 @@ export default createRouter({
     }, {
       path: '/favor',
       component: () => import("@/views/Favor/Favor.vue")
+    }, {
+      path: '/city',
+      component: () => import('@/views/City/City.vue'),
+      meta: {
+        hideTabbar: true
+      }
     }
   ]
 })
