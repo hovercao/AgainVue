@@ -10,6 +10,8 @@ import {createApp} from 'vue'
 // import App from "@/08_keep-alive/App";
 // import App from "@/09_组件的v-model/App";
 // import App from '@/10_vue3的内置函数/App'
+//import App from '@/11_自定义hooks/App'
+// import App from '@/10_vue3的内置函数/App'
 import App from '@/11_vue路由/App'
 
 import router from "@/Router";
