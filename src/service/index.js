@@ -29,3 +29,4 @@ class Request {
 
 export default new Request(baseURL, TIMEOUT)
 export * from './modules/city'
+export * from './modules/home'

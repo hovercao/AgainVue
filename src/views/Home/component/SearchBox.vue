@@ -6,13 +6,34 @@
       <i class="iconfont">&#xe601;</i>
     </div>
   </div>
+  <div class="selectTime" @click="show=true">
+    <div class="start">
+      <span class="tip">入住</span>
+      <span class="time">{{ startDate }}</span>
+    </div>
+    <div class="stay">共{{ stayDays }}晚</div>
+    <div class="end">
+      <span class="tip">离店</span>
+      <span class="time">{{ endDate }}</span>
+    </div>
+  </div>
+  <van-calendar v-model:show="show" :show-confirm="false" color="#ff9854" type="range" @confirm="onConfirm"/>
 </template>
 
 <script setup>
 import {useRouter} from 'vue-router'
 import useCityStore from '@/stores/modules/city'
 import {storeToRefs} from "pinia";
+import {ref} from "vue";
+import formatDate, {gitDiffDays} from '@/utils/formatDate'
 
+const nowDate = new Date()
+const startDate = ref(formatDate(nowDate))
+
+const nextDate = nowDate.setDate(nowDate.getDate() + 1)
+const endDate = ref(formatDate(nextDate))
+const stayDays = ref(gitDiffDays(startDate.value, endDate.value))
+const show = ref(false)
 const router = useRouter()
 const cityStore = useCityStore()
 const {currentCity} = storeToRefs(cityStore)
@@ -27,6 +48,13 @@ function getPosition() {
 
 function goCity() {
   router.push('/city')
+}
+
+function onConfirm(value) {
+  startDate.value = formatDate(value[0])
+  endDate.value = formatDate(value[1])
+  stayDays.value = gitDiffDays(value[0], value[1])
+  show.value = false
 }
 </script>
 <style lang="less" scoped>
@@ -54,4 +82,26 @@ function goCity() {
   }
 }
 
+.selectTime {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+
+  .start, .end {
+    width: 100px;
+    color: #999;
+    display: flex;
+    flex-direction: column;
+
+    .tip {
+      margin-bottom: 5px;
+    }
+  }
+
+  .stay {
+    flex: 1;
+    text-align: center;
+    color: #999;
+  }
+}
 </style>
