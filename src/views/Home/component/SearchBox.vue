@@ -29,7 +29,6 @@ import formatDate, {gitDiffDays} from '@/utils/formatDate'
 
 const nowDate = new Date()
 const startDate = ref(formatDate(nowDate))
-
 const nextDate = nowDate.setDate(nowDate.getDate() + 1)
 const endDate = ref(formatDate(nextDate))
 const stayDays = ref(gitDiffDays(startDate.value, endDate.value))
@@ -56,6 +55,10 @@ function onConfirm(value) {
   stayDays.value = gitDiffDays(value[0], value[1])
   show.value = false
 }
+
+defineExpose({
+  startDate, endDate, currentCity
+})
 </script>
 <style lang="less" scoped>
 .location {
