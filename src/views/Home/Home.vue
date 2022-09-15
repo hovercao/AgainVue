@@ -1,34 +1,53 @@
+<!--
+ * @Author: hovercao 17388766232@163.com
+ * @Date: 2022-09-15 07:58:42
+ * @LastEditors: hovercao 17388766232@163.com
+ * @LastEditTime: 2022-09-15 18:58:51
+ * @FilePath: \AgainVue\src\views\Home\Home.vue
+ * 
+-->
 <template>
   <NavBar></NavBar>
   <div class="banner">
-    <img src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1" alt="">
+    <img
+      src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1"
+      alt=""
+    />
   </div>
-  <SearchBox ref="searchRef"/>
+  <SearchBox ref="searchRef" />
   <div class="hotSuggests">
-    <span v-for="(item,index) in hotSuggests" :key="index"
-          :style="{color:item.tagText.color,background:item.tagText.background.color}"
-    >{{ item.tagText.text }}</span>
+    <span
+      v-for="(item, index) in hotSuggests"
+      :key="index"
+      :style="{
+        color: item.tagText.color,
+        background: item.tagText.background.color
+      }"
+      >{{ item.tagText.text }}</span
+    >
   </div>
   <div class="searchBut">
     <VanButton type="primary" block round @click="goSearch">搜索</VanButton>
   </div>
+  <HomeCategories />
 </template>
 
 <script setup>
-import NavBar from "./component/NavBar.vue";
+import NavBar from './component/NavBar.vue'
 import SearchBox from './component/SearchBox.vue'
-import {useRouter} from 'vue-router'
+import HomeCategories from './component/HomeCategories.vue'
+import { useRouter } from 'vue-router'
 
 import useHomeStore from '@/stores/modules/home'
-import {storeToRefs} from "pinia";
-import {ref} from "vue";
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
 const homeStore = useHomeStore()
 const router = useRouter()
 const searchRef = ref(null)
 homeStore.fetchHomeHotSuggests()
 homeStore.fetchGetCategories()
-const {hotSuggests, categories} = storeToRefs(homeStore)
+const { hotSuggests, categories } = storeToRefs(homeStore)
 
 function goSearch() {
   router.push({
@@ -38,8 +57,6 @@ function goSearch() {
     }
   })
 }
-
-
 </script>
 <style lang="less" scoped>
 .banner {
@@ -71,5 +88,4 @@ function goSearch() {
   margin-top: 16px;
   padding: 20px;
 }
-
 </style>
