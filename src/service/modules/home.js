@@ -6,8 +6,17 @@ export function getHomeHotSuggests() {
   })
 }
 
-export function getCategories(){
+export function getCategories() {
   return Request.get({
     url: 'home/categories'
+  })
+}
+
+export function getHomeList() {
+  return Request.get({
+    url: 'home/houselist',
+    params: {
+      page: 1
+    }
   })
 }

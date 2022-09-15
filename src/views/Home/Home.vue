@@ -10,45 +10,47 @@
   <NavBar></NavBar>
   <div class="banner">
     <img
-      src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1"
-      alt=""
+        src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1"
+        alt=""
     />
   </div>
-  <SearchBox ref="searchRef" />
+  <SearchBox ref="searchRef"/>
   <div class="hotSuggests">
     <span
-      v-for="(item, index) in hotSuggests"
-      :key="index"
-      :style="{
+        v-for="(item, index) in hotSuggests"
+        :key="index"
+        :style="{
         color: item.tagText.color,
         background: item.tagText.background.color
       }"
-      >{{ item.tagText.text }}</span
+    >{{ item.tagText.text }}</span
     >
   </div>
   <div class="searchBut">
     <VanButton type="primary" block round @click="goSearch">搜索</VanButton>
   </div>
-  <HomeCategories />
+  <HomeCategories/>
+  <HomeList/>
 </template>
 
 <script setup>
 import NavBar from './component/NavBar.vue'
 import SearchBox from './component/SearchBox.vue'
 import HomeCategories from './component/HomeCategories.vue'
-import { useRouter } from 'vue-router'
+import HomeList from './component/HomeList.vue'
+import {useRouter} from 'vue-router'
 
 import useHomeStore from '@/stores/modules/home'
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import {storeToRefs} from 'pinia'
+import {ref} from 'vue'
 
 const homeStore = useHomeStore()
 const router = useRouter()
 const searchRef = ref(null)
 homeStore.fetchHomeHotSuggests()
 homeStore.fetchGetCategories()
-const { hotSuggests, categories } = storeToRefs(homeStore)
-
+homeStore.fetchGetHouseList()
+const {hotSuggests} = storeToRefs(homeStore)
 function goSearch() {
   router.push({
     path: '/search',
