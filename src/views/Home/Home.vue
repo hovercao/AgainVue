@@ -31,6 +31,7 @@
   </div>
   <HomeCategories/>
   <HomeList/>
+  <div v-if="scrollTop>=100" class="search">scrollTop</div>
 </template>
 
 <script setup>
@@ -43,14 +44,17 @@ import {useRouter} from 'vue-router'
 import useHomeStore from '@/stores/modules/home'
 import {storeToRefs} from 'pinia'
 import {ref} from 'vue'
+import useScroll from "@/hooks/useScroll";
 
 const homeStore = useHomeStore()
 const router = useRouter()
 const searchRef = ref(null)
+const {scrollTop} = useScroll()
 homeStore.fetchHomeHotSuggests()
 homeStore.fetchGetCategories()
 homeStore.fetchGetHouseList()
 const {hotSuggests} = storeToRefs(homeStore)
+
 function goSearch() {
   router.push({
     path: '/search',
@@ -59,6 +63,10 @@ function goSearch() {
     }
   })
 }
+
+useScroll(() => {
+  homeStore.fetchGetHouseList()
+})
 </script>
 <style lang="less" scoped>
 .banner {
@@ -89,5 +97,13 @@ function goSearch() {
 .searchBut {
   margin-top: 16px;
   padding: 20px;
+}
+.search{
+  position: fixed;
+  top: 0;
+  height: 30px;
+  background: #ff9854;
+  width: 100%;
+  left: 0;
 }
 </style>

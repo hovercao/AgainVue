@@ -12,11 +12,11 @@ export function getCategories() {
   })
 }
 
-export function getHomeList() {
+export function getHomeList(pageSize) {
   return Request.get({
     url: 'home/houselist',
     params: {
-      page: 1
+      page: pageSize
     }
   })
 }
