@@ -10,63 +10,67 @@
   <NavBar></NavBar>
   <div class="banner">
     <img
-        src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1"
-        alt=""
+      src="https://th.bing.com/th/id/OIP.O1CyeKs-ES3CZTfWbTjA2gHaEo?pid=ImgDet&rs=1"
+      alt=""
     />
   </div>
-  <SearchBox ref="searchRef"/>
+  <SearchBox ref="searchRef" />
   <div class="hotSuggests">
     <span
-        v-for="(item, index) in hotSuggests"
-        :key="index"
-        :style="{
+      v-for="(item, index) in hotSuggests"
+      :key="index"
+      :style="{
         color: item.tagText.color,
-        background: item.tagText.background.color
+        background: item.tagText.background.color,
       }"
-    >{{ item.tagText.text }}</span
+      >{{ item.tagText.text }}</span
     >
   </div>
   <div class="searchBut">
     <VanButton type="primary" block round @click="goSearch">搜索</VanButton>
   </div>
-  <HomeCategories/>
-  <HomeList/>
-  <div v-if="scrollTop>=100" class="search">scrollTop</div>
+  <HomeCategories />
+  <HomeList />
+  <div v-if="scrollTop >= clientHeight" class="search">
+    <SearchBar></SearchBar>
+  </div>
 </template>
 
 <script setup>
-import NavBar from './component/NavBar.vue'
-import SearchBox from './component/SearchBox.vue'
-import HomeCategories from './component/HomeCategories.vue'
-import HomeList from './component/HomeList.vue'
-import {useRouter} from 'vue-router'
+import { useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
 
-import useHomeStore from '@/stores/modules/home'
-import {storeToRefs} from 'pinia'
-import {ref} from 'vue'
+import NavBar from "./component/NavBar.vue";
+import SearchBox from "./component/SearchBox.vue";
+import HomeCategories from "./component/HomeCategories.vue";
+import HomeList from "./component/HomeList.vue";
+import SearchBar from "./component/SearchBar.vue";
+
+import useHomeStore from "@/stores/modules/home";
 import useScroll from "@/hooks/useScroll";
 
-const homeStore = useHomeStore()
-const router = useRouter()
-const searchRef = ref(null)
-const {scrollTop} = useScroll()
-homeStore.fetchHomeHotSuggests()
-homeStore.fetchGetCategories()
-homeStore.fetchGetHouseList()
-const {hotSuggests} = storeToRefs(homeStore)
+const homeStore = useHomeStore();
+const router = useRouter();
+const searchRef = ref(null);
+const { scrollTop, clientHeight } = useScroll();
+homeStore.fetchHomeHotSuggests();
+homeStore.fetchGetCategories();
+homeStore.fetchGetHouseList();
+const { hotSuggests } = storeToRefs(homeStore);
 
 function goSearch() {
   router.push({
-    path: '/search',
+    path: "/search",
     query: {
-      ...searchRef.value
-    }
-  })
+      ...searchRef.value,
+    },
+  });
 }
 
 useScroll(() => {
-  homeStore.fetchGetHouseList()
-})
+  homeStore.fetchGetHouseList();
+});
 </script>
 <style lang="less" scoped>
 .banner {
@@ -98,12 +102,13 @@ useScroll(() => {
   margin-top: 16px;
   padding: 20px;
 }
-.search{
+.search {
   position: fixed;
   top: 0;
-  height: 30px;
-  background: #ff9854;
+  height: 45px;
+  background: #fff;
   width: 100%;
   left: 0;
+  padding: 20px;
 }
 </style>

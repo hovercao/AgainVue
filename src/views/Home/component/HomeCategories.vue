@@ -9,17 +9,17 @@
   </div>
 </template>
 <script setup>
-import useHomeStore from '@/stores/modules/home'
-import { storeToRefs } from 'pinia'
-const homeStore = useHomeStore()
-const { categories } = storeToRefs(homeStore)
+import useHomeStore from "@/stores/modules/home";
+import { storeToRefs } from "pinia";
+const homeStore = useHomeStore();
+const { categories } = storeToRefs(homeStore);
 </script>
 <style lang="less" scoped>
 .HomeCategories {
   display: flex;
   overflow-x: auto;
   margin: 0 20px;
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     display: none;
   }
   .item {
