@@ -1,11 +1,3 @@
-<!--
- * @Author: hovercao 17388766232@163.com
- * @Date: 2022-09-15 07:58:42
- * @LastEditors: hovercao 17388766232@163.com
- * @LastEditTime: 2022-09-15 18:58:51
- * @FilePath: \AgainVue\src\views\Home\Home.vue
- * 
--->
 <template>
   <NavBar></NavBar>
   <div class="banner">
@@ -45,7 +37,7 @@ import NavBar from "./component/NavBar.vue";
 import SearchBox from "./component/SearchBox.vue";
 import HomeCategories from "./component/HomeCategories.vue";
 import HomeList from "./component/HomeList.vue";
-import SearchBar from "./component/SearchBar.vue";
+import SearchBar from "@/components/SearchBar/SearchBar.vue";
 
 import useHomeStore from "@/stores/modules/home";
 import useScroll from "@/hooks/useScroll";
@@ -107,8 +99,8 @@ useScroll(() => {
   top: 0;
   height: 45px;
   background: #fff;
-  width: 100%;
   left: 0;
-  padding: 20px;
+  right: 0;
+  padding: 16px 16px 10px;
 }
 </style>

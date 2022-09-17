@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 
-export default function (date) {
-  return dayjs(date).format('MM月DD日')
+export default function (date, format) {
+  return dayjs(date).format(format);
 }
 
 export function gitDiffDays(start, end) {
-  return dayjs(end).diff(start, 'day')
+  return dayjs(end).diff(start, "day");
 }
