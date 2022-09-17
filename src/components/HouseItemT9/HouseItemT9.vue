@@ -1,17 +1,17 @@
 <template>
   <div class="item">
-    <img :src="itemData.image.url" alt="">
+    <img :src="itemData.image.url" alt="" />
+    {{ itemData.houseName }}
   </div>
-  {{ itemData.houseName }}
 </template>
 
 <script setup>
 defineProps({
   itemData: {
     type: Object,
-    default: () => ({})
-  }
-})
+    default: () => ({}),
+  },
+});
 </script>
 <style lang="less" scoped>
 .item {

@@ -7,6 +7,7 @@ export default defineStore("main", {
   state: () => ({
     startDate,
     endDate,
+    isLoading: false,
   }),
   actions: {},
 });

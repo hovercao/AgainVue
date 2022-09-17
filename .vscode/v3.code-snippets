@@ -1,0 +1,23 @@
+{
+    "Print to console": {
+        "scope": "vue", //指定文件类型，只有.vue文件可以触发
+        "prefix": "v3", //自定义触发指令，我这里设置输入v3按下回车即可快速生成模板
+        "body": [ //定义模板内容
+            "<template>",
+            "    <div class='${TM_FILENAME_BASE}'>",
+            "       ${TM_FILENAME_BASE}",
+            "    </div>",
+            "</template>",
+            "<script setup >",
+            "",
+            "</script>",
+            "",
+           
+            "",
+            "<style lang='less' scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "Log output to console"
+    }
+}
