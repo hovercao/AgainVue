@@ -1,0 +1,33 @@
+{
+  "workbench.colorTheme": "GitHub Dark High Contrast",
+  "editor.fontSize": 17,
+  "editor.lineHeight": 1.8,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "editor.formatOnSave": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "editor.foldingImportsByDefault": true,
+  "editor.fontWeight": "1",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 头部注释
+  "fileheader.customMade": {
+    "Author": "git config user.name && git config user.email", // 同时获取用户名与邮箱
+    "Date": "Do not edit", // 文件创建时间(不变)
+    "LastEditors": "git config user.name && git config user.email", // 文件最后编辑者 与Author字段一致
+    "LastEditTime": "Do not edit", // 文件最后编辑时间
+    "FilePath": "Do not edit" // 文件在项目中的相对路径 自动更新
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontLigatures": true
+}

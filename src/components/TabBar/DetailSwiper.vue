@@ -2,7 +2,7 @@
  * @Author: hovercao 17388766232@163.com
  * @Date: 2022-09-17 17:20:41
  * @LastEditors: hovercao 43169035+hovercao@users.noreply.github.com
- * @LastEditTime: 2022-09-18 17:26:58
+ * @LastEditTime: 2022-09-18 12:18:41
  * @FilePath: /AgainVue/src/views/Detail/components/DetailSwiper.vue
 -->
 <template>
@@ -15,10 +15,7 @@
         <!-- <div>{{ props.active }}/{{ housePics.length }}-{{ props.total }}</div> -->
         <div class="swiperIndicators">
           <template v-for="(value, key, index) in swiperItem" :key="key">
-            <span>{{ getName(value[0].title) }}</span>
-            <span
-              >{{ currentIndex(housePics[active]) }}/{{ value.length }}</span
-            >
+            <span>{{ value[0].title }}</span>
           </template>
         </div>
       </template>
@@ -46,6 +43,7 @@ watch(
       }
       swiperItem.value[item.enumPictureCategory].push(item);
     }
+    console.log(swiperItem.value);
   }
 );
 
@@ -53,12 +51,6 @@ const nameReg = /【(.*?)】/i;
 
 function getName(name) {
   return nameReg.exec(name)[1];
-}
-
-function currentIndex(item) {
-  const valueArray = swiperItem.value[item?.enumPictureCategory];
-  console.log(valueArray);
-  return 1;
 }
 </script>
 
